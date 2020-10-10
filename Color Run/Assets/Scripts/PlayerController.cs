@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerControler : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     private CharacterController controller;
 
@@ -29,7 +29,7 @@ public class PlayerControler : MonoBehaviour
         else{
             jumpVelocity -= gravity; //faz ele cair
         }
-
+        speed += speed*(Time.deltaTime/50); //incrementa velocidade com o tempo
         direction.y= jumpVelocity; //pular
         controller.Move(direction*Time.deltaTime); //mover
     }
