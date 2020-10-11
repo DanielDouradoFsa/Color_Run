@@ -35,7 +35,7 @@ public class SpawnMap : MonoBehaviour
                 platformIndex = 0;
             }
             currentPoint = currentPlatform[platformIndex].GetComponent<Platform>().point;
-            Debug.Log(currentPoint.position.z);
+            // Debug.Log(currentPoint.position.z);
         }
     }
 
