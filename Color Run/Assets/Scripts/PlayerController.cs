@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     private float jumpVelocity;
     private bool isMovingR = false;
     private bool isMovingL = false;
-    public bool isColliding = false;
 
     void Start()
     {
@@ -28,17 +27,13 @@ public class PlayerController : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.Space)){
                 jumpVelocity = jumpHeight; // faz ele pular
             }
-            if(Input.GetKeyDown(KeyCode.RightArrow) && !isMovingR){
+            if(Input.GetKeyDown(KeyCode.RightArrow) && !isMovingR && transform.position.x < 5f){
                 isMovingR = true;
                 StartCoroutine(RightMove()); //move para a direita
-                if(isColliding)
-                    StopCoroutine(RightMove());
             }
-            if(Input.GetKeyDown(KeyCode.LeftArrow) && !isMovingL){
+            if(Input.GetKeyDown(KeyCode.LeftArrow) && !isMovingL && transform.position.x > -5f){
                 isMovingL = true;
                 StartCoroutine(LeftMove()); //move para a esquerda
-                if(isColliding)
-                    StopCoroutine(LeftMove());
             }
         }
         else{
@@ -51,7 +46,7 @@ public class PlayerController : MonoBehaviour
 
     //método que é executado várias vezes
     IEnumerator LeftMove(){
-        for(float i = 0; i<10; i += 0.1f){
+        for(float i = 0; i<6; i += 0.1f){
             controller.Move(Vector3.left * Time.deltaTime * horizontalSpeed);
             yield return null;
         }
@@ -63,11 +58,5 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
         isMovingR = false;
-    }
-
-    private void OnCollisionEnter(Collision other) {
-        if(other.gameObject.CompareTag("Wall")){
-            isColliding = true;
-        }
     }
 }
