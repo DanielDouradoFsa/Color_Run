@@ -21,7 +21,7 @@ public class SpawnMap : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         gc = FindObjectOfType<GameController>();
-        timeText = GetComponent<UnityEngine.UI.Text>();
+        timeText = GetComponent<Text>();
 
         for(int i=0; i<platforms.Count; i++){
             Transform p = Instantiate(platforms[i], new Vector3(0,0,86*i), transform.rotation).transform; //spawna os 3 primeiros
@@ -30,13 +30,12 @@ public class SpawnMap : MonoBehaviour
         }
 
         currentPoint = currentPlatform[platformIndex].GetComponent<Platform>().point;
-        InvokeRepeating("sortColor",4,10);
+        InvokeRepeating("sortColor",2,7);
     }
 
     void Update()
     { 
         float distance = player.position.z - 86*(count);
-        // Invoke("sortColor",3f);
         if(distance >= 0){
             Recycle(currentPlatform[platformIndex].gameObject);
             platformIndex ++;
@@ -46,7 +45,6 @@ public class SpawnMap : MonoBehaviour
             }
             currentPoint = currentPlatform[platformIndex].GetComponent<Platform>().point; 
         }
-        // Invoke("sortColor",3f);
     }
 
     public void Recycle(GameObject platform){
@@ -58,15 +56,16 @@ public class SpawnMap : MonoBehaviour
         color = Random.Range(0,2);
         if(color == 0){
             gc.amarelo();
-            InvokeRepeating("temporizador", 0,1f);
+            Debug.Log("amarelo");
+            // InvokeRepeating("temporizador", 0,1f);
         }
         if(color == 1){
             gc.azul();
-            InvokeRepeating("temporizador", 0,1f);
+            // InvokeRepeating("temporizador", 0,1f);
         }
         if(color == 2){
             gc.vermelho();
-            InvokeRepeating("temporizador", 0,1f);
+            // InvokeRepeating("temporizador", 0,1f);
         }
     }
 

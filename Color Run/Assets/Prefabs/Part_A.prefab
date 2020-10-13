@@ -1671,6 +1671,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floor1
       objectReference: {fileID: 0}
+    - target: {fileID: 4195162860447044168, guid: 8ccac715e3499fd46a9eec4c615f5c70,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4745625572412128220, guid: 8ccac715e3499fd46a9eec4c615f5c70,
         type: 3}
       propertyPath: m_TagString
