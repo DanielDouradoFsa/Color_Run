@@ -16,7 +16,6 @@ public class GameController : MonoBehaviour
     private GameObject[] bcAzul;
     private GameObject[] bcAmarelo;
     private GameObject[] bcVermelho;
-    public float waitTime = 5f;
 
     void Start()
     {
@@ -57,20 +56,20 @@ public class GameController : MonoBehaviour
         azulText.SetActive(true);
         amareloText.SetActive(false);
         vermelhoText.SetActive(false);
-        Invoke("azulEscolhido",waitTime);
+        Invoke("azulEscolhido",3f);
     }
     public void amarelo(){
         amareloText.SetActive(true);
         vermelhoText.SetActive(false);
         azulText.SetActive(false);
-        Invoke("amareloEscolhido",waitTime);
+        Invoke("amareloEscolhido",3f);
        
     }
     public void vermelho(){
         vermelhoText.SetActive(true);
         amareloText.SetActive(false);
         azulText.SetActive(false);
-        Invoke("vermelhoEscolhido",waitTime);
+        Invoke("vermelhoEscolhido",3f);
     }
 
     void azulEscolhido(){

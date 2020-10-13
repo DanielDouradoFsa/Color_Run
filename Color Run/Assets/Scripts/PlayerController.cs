@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private float jumpVelocity;
     private bool isMovingR = false;
     private bool isMovingL = false;
-    private bool isJumping = false;
+    private bool isJumping;
     public float rayRadius;
     public LayerMask layer;
     public Animator anim;
@@ -31,32 +31,27 @@ public class PlayerController : MonoBehaviour
         //foward é o eixo Z para frente
         Vector3 direction = Vector3.forward * speed;
         if(controller.isGrounded){
-            if(Input.GetKeyDown(KeyCode.Space)){
-                jumpVelocity = jumpHeight;
-                isJumping=true; // faz ele pular
+            isJumping = false;
+            if(Input.GetKeyDown(KeyCode.Space) && !isJumping){
+                jumpVelocity = jumpHeight;// faz ele pular
+                isJumping = true;
             }
         }
-        if(Input.GetKeyDown(KeyCode.RightArrow) && !isMovingR && transform.position.x <= 4f){
-            if(Input.GetKeyDown(KeyCode.Space)){
-                jumpVelocity = jumpHeight;
-                isJumping=true; // faz ele pular
-            }
+
+        if(Input.GetKey(KeyCode.RightArrow) && !isMovingR && transform.position.x <= 4f){
             isMovingR = true;
-            StartCoroutine(RightMove());
-            if(Input.GetKeyDown(KeyCode.LeftArrow)){
-                StopCoroutine(RightMove());
-            }
-             //move para a direita
+            StartCoroutine(RightMove());//move para a direita
+            // if(Input.GetKeyDown(KeyCode.LeftArrow)){
+            //     StopCoroutine(RightMove());
+            // }
+             
         }
-        if(Input.GetKeyDown(KeyCode.LeftArrow) && !isMovingL && transform.position.x >= -4f){
-            if(Input.GetKeyDown(KeyCode.Space)){
-                jumpVelocity = jumpHeight; // faz ele pular
-            }
+        if(Input.GetKey(KeyCode.LeftArrow) && !isMovingL && transform.position.x >= -4f){
             isMovingL = true;
-            StartCoroutine(LeftMove());
-            if(Input.GetKeyDown(KeyCode.RightArrow)){
-                StopCoroutine(LeftMove());
-            } //move para a esquerda
+            StartCoroutine(LeftMove());//move para a esquerda
+            // if(Input.GetKeyDown(KeyCode.RightArrow)){
+            //     StopCoroutine(LeftMove());
+            // } 
         } 
         if(!controller.isGrounded){
             jumpVelocity -= gravity; //faz ele cair
@@ -77,15 +72,22 @@ public class PlayerController : MonoBehaviour
 
     //método que é executado várias vezes
     IEnumerator LeftMove(){
-        for(float i = 0; i<3; i += 0.1f){
+        for(float i = 0; i<1; i += 0.1f){
             controller.Move(Vector3.left * Time.deltaTime * horizontalSpeed);
+             if(Input.GetKeyDown(KeyCode.Space) && !isJumping){
+                jumpVelocity = jumpHeight;// faz ele pular
+                isJumping = true;
+            }
             yield return null;
         }
         isMovingL = false;
     }
     IEnumerator RightMove(){
-        for(float i = 0; i<3; i += 0.1f){
+        for(float i = 0; i<1; i += 0.1f){
             controller.Move(Vector3.right * Time.deltaTime * horizontalSpeed);
+            if(Input.GetKeyDown(KeyCode.Space) && !isJumping){
+                jumpVelocity = jumpHeight; // faz ele pular
+            }
             yield return null;
         }
         isMovingR = false;

@@ -299,8 +299,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -112}
-  m_SizeDelta: {x: 504.91455, y: 94.67148}
+  m_AnchoredPosition: {x: 0, y: -114.4}
+  m_SizeDelta: {x: 530.32666, y: 99.43625}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &571523795
 MonoBehaviour:
@@ -935,7 +935,6 @@ MonoBehaviour:
   amareloText: {fileID: 1511473312}
   vermelhoText: {fileID: 920795703}
   score: 0
-  waitTime: 2
 --- !u!4 &1208157123
 Transform:
   m_ObjectHideFlags: 0
@@ -1327,7 +1326,7 @@ PrefabInstance:
     - target: {fileID: 7984611952203078836, guid: 03164d7c2682f6d4cb587b7b710167c9,
         type: 3}
       propertyPath: horizontalSpeed
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7984611952203078836, guid: 03164d7c2682f6d4cb587b7b710167c9,
         type: 3}
@@ -1347,12 +1346,12 @@ PrefabInstance:
     - target: {fileID: 7984611952203078836, guid: 03164d7c2682f6d4cb587b7b710167c9,
         type: 3}
       propertyPath: speed
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7984611952203078836, guid: 03164d7c2682f6d4cb587b7b710167c9,
         type: 3}
       propertyPath: jumpHeight
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7984611952203078839, guid: 03164d7c2682f6d4cb587b7b710167c9,
         type: 3}

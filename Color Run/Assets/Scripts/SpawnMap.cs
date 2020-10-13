@@ -53,8 +53,8 @@ public class SpawnMap : MonoBehaviour
     }
 
     public void sortColor(){
-        isSorted=true;
-        color = Random.Range(0,2);
+        color = Random.Range(0,3);
+        isSorted = true;
         if(color == 0){
             gc.amarelo();
             InvokeRepeating("temporizador",0,1f);
@@ -72,13 +72,14 @@ public class SpawnMap : MonoBehaviour
     void temporizador(){
         if(isSorted){
             timeText.gameObject.SetActive(true);
+            timeText.text = timeCount.ToString() + "s";
+            timeCount --;
         }
-        timeText.text = timeCount.ToString() + "s";
-        timeCount --;
         if(timeCount < 0){
             timeCount = 3;
             timeText.gameObject.SetActive(false);
-            isSorted=false;
+            isSorted = false;
         }
+        Debug.Log(timeCount);
     }
 }
