@@ -42,14 +42,21 @@ public class PlayerController : MonoBehaviour
                 isJumping=true; // faz ele pular
             }
             isMovingR = true;
-            StartCoroutine(RightMove()); //move para a direita
+            StartCoroutine(RightMove());
+            if(Input.GetKeyDown(KeyCode.LeftArrow)){
+                StopCoroutine(RightMove());
+            }
+             //move para a direita
         }
         if(Input.GetKeyDown(KeyCode.LeftArrow) && !isMovingL && transform.position.x >= -4f){
             if(Input.GetKeyDown(KeyCode.Space)){
                 jumpVelocity = jumpHeight; // faz ele pular
             }
             isMovingL = true;
-            StartCoroutine(LeftMove()); //move para a esquerda
+            StartCoroutine(LeftMove());
+            if(Input.GetKeyDown(KeyCode.RightArrow)){
+                StopCoroutine(LeftMove());
+            } //move para a esquerda
         } 
         if(!controller.isGrounded){
             jumpVelocity -= gravity; //faz ele cair
@@ -57,7 +64,6 @@ public class PlayerController : MonoBehaviour
         speed += speed*(Time.deltaTime/50); //incrementa velocidade com o tempo
         direction.y= jumpVelocity; //pular
         controller.Move(direction*Time.deltaTime); //mover
-        OnCollision();
         if(transform.position.y < -2){
             anim.SetTrigger("die");
             speed = 0;
@@ -84,20 +90,6 @@ public class PlayerController : MonoBehaviour
         }
         isMovingR = false;
     }
-
-    void OnCollision(){
-        RaycastHit hit; //armazena o objeto que foi batido
-        // if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, rayRadius, layer) && !isDead){
-        //     Debug.Log("bateu poha");
-        //     anim.SetTrigger("die");
-        //     speed = 0;
-        //     jumpHeight = 0;
-        //     horizontalSpeed = 0;
-        //     isDead = true;
-        //     Invoke("GameOver",1f);
-        // }
-    }
-
     void GameOver(){
         gc.ShowGameOver();
     }

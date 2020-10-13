@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 448372399}
   m_Layer: 5
   m_Name: Tempo
-  m_TagString: Untagged
+  m_TagString: Tempo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -256,7 +256,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: TEMPO
+  m_Text: 
 --- !u!222 &448372400
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1254,7 +1254,7 @@ PrefabInstance:
         type: 3}
       propertyPath: timeText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 448372399}
     - target: {fileID: 4107846855276944638, guid: 32576af971e84044ab584b5d85a82972,
         type: 3}
       propertyPath: m_Name

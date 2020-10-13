@@ -16,12 +16,12 @@ public class SpawnMap : MonoBehaviour
     public Text timeText;
     public int timeCount =3;
     public int color;
+    private bool isSorted;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         gc = FindObjectOfType<GameController>();
-        timeText = GetComponent<Text>();
 
         for(int i=0; i<platforms.Count; i++){
             Transform p = Instantiate(platforms[i], new Vector3(0,0,86*i), transform.rotation).transform; //spawna os 3 primeiros
@@ -53,24 +53,32 @@ public class SpawnMap : MonoBehaviour
     }
 
     public void sortColor(){
+        isSorted=true;
         color = Random.Range(0,2);
         if(color == 0){
             gc.amarelo();
+            InvokeRepeating("temporizador",0,1f);
         }
         if(color == 1){
             gc.azul();
+            InvokeRepeating("temporizador",0,1f);
         }
         if(color == 2){
             gc.vermelho();
+            InvokeRepeating("temporizador",0,1f);
         }
     }
 
     void temporizador(){
-        timeText.gameObject.SetActive(true);
+        if(isSorted){
+            timeText.gameObject.SetActive(true);
+        }
         timeText.text = timeCount.ToString() + "s";
         timeCount --;
         if(timeCount < 0){
             timeCount = 3;
+            timeText.gameObject.SetActive(false);
+            isSorted=false;
         }
     }
 }
