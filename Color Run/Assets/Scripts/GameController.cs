@@ -13,10 +13,10 @@ public class GameController : MonoBehaviour
     public GameObject vermelhoText;
     public float score;
     private PlayerController player;
-    private BoxCollider bcAzul;
-    private BoxCollider bcAmarelo;
-    private BoxCollider bcVermelho;
-    public float waitTime=3f;
+    private GameObject[] bcAzul;
+    private GameObject[] bcAmarelo;
+    private GameObject[] bcVermelho;
+    public float waitTime = 5f;
 
     void Start()
     {
@@ -26,9 +26,9 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bcVermelho = GameObject.FindGameObjectWithTag("Vermelho").GetComponent<BoxCollider>();
-        bcAzul = GameObject.FindGameObjectWithTag("Azul").GetComponent<BoxCollider>();
-        bcAmarelo = GameObject.FindGameObjectWithTag("Amarelo").GetComponent<BoxCollider>();
+        bcVermelho = GameObject.FindGameObjectsWithTag("Vermelho");
+        bcAzul = GameObject.FindGameObjectsWithTag("Azul");
+        bcAmarelo = GameObject.FindGameObjectsWithTag("Amarelo");
 
         if(!player.isDead){
         score += Time.deltaTime * player.speed;
@@ -75,20 +75,48 @@ public class GameController : MonoBehaviour
     }
 
     void azulEscolhido(){
-        bcAzul.enabled=true;
-        bcAmarelo.enabled=false;
-        bcVermelho.enabled=false;
+        foreach (GameObject item in bcAzul)
+        {
+            item.GetComponent<BoxCollider>().enabled = true;            
+        }
+         foreach (GameObject item in bcAmarelo)
+        {
+            item.GetComponent<BoxCollider>().enabled = false;            
+        }
+         foreach (GameObject item in bcVermelho)
+        {
+            item.GetComponent<BoxCollider>().enabled = false;            
+        }
     }
 
     void vermelhoEscolhido(){
-        bcVermelho.enabled=true;
-        bcAzul.enabled=false;
-        bcAmarelo.enabled=false;
+           foreach (GameObject item in bcAzul)
+        {
+            item.GetComponent<BoxCollider>().enabled = false;            
+        }
+         foreach (GameObject item in bcAmarelo)
+        {
+            item.GetComponent<BoxCollider>().enabled = false;            
+        }
+         foreach (GameObject item in bcVermelho)
+        {
+            item.GetComponent<BoxCollider>().enabled = true;            
+        }
     }
 
     void amareloEscolhido(){
-        bcAzul.enabled=false;
-        bcAmarelo.enabled=true;
-        bcVermelho.enabled=false;
+           foreach (GameObject item in bcAzul)
+        {
+            item.GetComponent<BoxCollider>().enabled = false;            
+        }
+         foreach (GameObject item in bcAmarelo)
+        {
+            item.GetComponent<BoxCollider>().enabled = true;            
+        }
+         foreach (GameObject item in bcVermelho)
+        {
+            item.GetComponent<BoxCollider>().enabled = false;            
+        }
+
     }
 }
