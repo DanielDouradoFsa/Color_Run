@@ -16,9 +16,6 @@ public class SpawnMap : MonoBehaviour
     public Text timeText;
     public int timeCount =3;
     public int color;
-    // private BoxCollider bcAzul;
-    // private BoxCollider bcAmarelo;
-    // private BoxCollider bcVermelho;
 
     void Start()
     {
@@ -38,21 +35,6 @@ public class SpawnMap : MonoBehaviour
 
     void Update()
     { 
-        // bcVermelho = GameObject.FindGameObjectWithTag("Vermelho").GetComponent<BoxCollider>();
-        // bcAzul = GameObject.FindGameObjectWithTag("Azul").GetComponent<BoxCollider>();;
-        // bcAmarelo = GameObject.FindGameObjectWithTag("Amarelo").GetComponent<BoxCollider>();
-
-        // if(color == 0){
-        //     Invoke("amareloEscolhido",3f);
-        // }
-        // if(color == 1){
-        //     Invoke("azulEscolhido",3f);
-        // }
-
-        // if(color == 2){
-        //     Invoke("vermelhoEscolhido",3f);
-        // }   
-
         float distance = player.position.z - 86*(count);
         if(distance >= 0){
             Recycle(currentPlatform[platformIndex].gameObject);
@@ -91,24 +73,4 @@ public class SpawnMap : MonoBehaviour
             timeCount = 3;
         }
     }
-
-    // void azulEscolhido(){
-    //      bcAzul.enabled=true;
-    //      bcAmarelo.enabled=false;
-    //      bcVermelho.enabled=false;
-    // }
-
-    // void vermelhoEscolhido(){
-    //     bcVermelho.enabled=true;
-    //     bcAzul.enabled=false;
-    //     bcAmarelo.enabled=false;
-        
-    // }
-
-    // void amareloEscolhido(){
-    //     bcAzul.enabled=false;
-    //     bcAmarelo.enabled=true;
-    //     bcVermelho.enabled=false;
-
-    // }
 }

@@ -63,7 +63,6 @@ public class GameController : MonoBehaviour
         amareloText.SetActive(true);
         vermelhoText.SetActive(false);
         azulText.SetActive(false);
-        Debug.Log("amarelo2");
         Invoke("amareloEscolhido",waitTime);
        
     }
