@@ -12,10 +12,16 @@ public class PlayerController : MonoBehaviour
     private float jumpVelocity;
     private bool isMovingR = false;
     private bool isMovingL = false;
+    public float rayRadius;
+    public LayerMask layer;
+    public Animator anim;
+    public bool isDead = false;
+    private GameController gc;
 
     void Start()
     {
         controller = GetComponent<CharacterController> ();
+        gc = FindObjectOfType<GameController>();
     }
 
     // Update is called once per frame
@@ -27,11 +33,11 @@ public class PlayerController : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.Space)){
                 jumpVelocity = jumpHeight; // faz ele pular
             }
-            if(Input.GetKeyDown(KeyCode.RightArrow) && !isMovingR && transform.position.x < 5f){
+            if(Input.GetKeyDown(KeyCode.RightArrow) && !isMovingR && transform.position.x <= 4f){
                 isMovingR = true;
                 StartCoroutine(RightMove()); //move para a direita
             }
-            if(Input.GetKeyDown(KeyCode.LeftArrow) && !isMovingL && transform.position.x > -5f){
+            if(Input.GetKeyDown(KeyCode.LeftArrow) && !isMovingL && transform.position.x >= -4f){
                 isMovingL = true;
                 StartCoroutine(LeftMove()); //move para a esquerda
             }
@@ -42,6 +48,7 @@ public class PlayerController : MonoBehaviour
         speed += speed*(Time.deltaTime/50); //incrementa velocidade com o tempo
         direction.y= jumpVelocity; //pular
         controller.Move(direction*Time.deltaTime); //mover
+        OnCollision();
     }
 
     //método que é executado várias vezes
@@ -58,5 +65,22 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
         isMovingR = false;
+    }
+
+    void OnCollision(){
+        RaycastHit hit; //armazena o objeto que foi batido
+        // if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, rayRadius, layer) && !isDead){
+        //     Debug.Log("bateu poha");
+        //     anim.SetTrigger("die");
+        //     speed = 0;
+        //     jumpHeight = 0;
+        //     horizontalSpeed = 0;
+        //     isDead = true;
+        //     Invoke("GameOver",1f);
+        // }
+    }
+
+    void GameOver(){
+        gc.ShowGameOver();
     }
 }
