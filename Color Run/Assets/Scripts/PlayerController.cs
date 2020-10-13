@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private float jumpVelocity;
     private bool isMovingR = false;
     private bool isMovingL = false;
+    private bool isJumping = false;
     public float rayRadius;
     public LayerMask layer;
     public Animator anim;
@@ -31,18 +32,26 @@ public class PlayerController : MonoBehaviour
         Vector3 direction = Vector3.forward * speed;
         if(controller.isGrounded){
             if(Input.GetKeyDown(KeyCode.Space)){
-                jumpVelocity = jumpHeight; // faz ele pular
-            }
-            if(Input.GetKeyDown(KeyCode.RightArrow) && !isMovingR && transform.position.x <= 4f){
-                isMovingR = true;
-                StartCoroutine(RightMove()); //move para a direita
-            }
-            if(Input.GetKeyDown(KeyCode.LeftArrow) && !isMovingL && transform.position.x >= -4f){
-                isMovingL = true;
-                StartCoroutine(LeftMove()); //move para a esquerda
+                jumpVelocity = jumpHeight;
+                isJumping=true; // faz ele pular
             }
         }
-        else{
+        if(Input.GetKeyDown(KeyCode.RightArrow) && !isMovingR && transform.position.x <= 4f){
+            if(Input.GetKeyDown(KeyCode.Space)){
+                jumpVelocity = jumpHeight;
+                isJumping=true; // faz ele pular
+            }
+            isMovingR = true;
+            StartCoroutine(RightMove()); //move para a direita
+        }
+        if(Input.GetKeyDown(KeyCode.LeftArrow) && !isMovingL && transform.position.x >= -4f){
+            if(Input.GetKeyDown(KeyCode.Space)){
+                jumpVelocity = jumpHeight; // faz ele pular
+            }
+            isMovingL = true;
+            StartCoroutine(LeftMove()); //move para a esquerda
+        } 
+        if(!controller.isGrounded){
             jumpVelocity -= gravity; //faz ele cair
         }
         speed += speed*(Time.deltaTime/50); //incrementa velocidade com o tempo
@@ -62,14 +71,14 @@ public class PlayerController : MonoBehaviour
 
     //método que é executado várias vezes
     IEnumerator LeftMove(){
-        for(float i = 0; i<6; i += 0.1f){
+        for(float i = 0; i<3; i += 0.1f){
             controller.Move(Vector3.left * Time.deltaTime * horizontalSpeed);
             yield return null;
         }
         isMovingL = false;
     }
     IEnumerator RightMove(){
-        for(float i = 0; i<6; i += 0.1f){
+        for(float i = 0; i<3; i += 0.1f){
             controller.Move(Vector3.right * Time.deltaTime * horizontalSpeed);
             yield return null;
         }

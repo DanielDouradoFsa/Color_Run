@@ -1277,7 +1277,7 @@ PrefabInstance:
     - target: {fileID: 7984611952203078826, guid: 03164d7c2682f6d4cb587b7b710167c9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.4
+      value: 2.11
       objectReference: {fileID: 0}
     - target: {fileID: 7984611952203078826, guid: 03164d7c2682f6d4cb587b7b710167c9,
         type: 3}
@@ -1327,7 +1327,7 @@ PrefabInstance:
     - target: {fileID: 7984611952203078836, guid: 03164d7c2682f6d4cb587b7b710167c9,
         type: 3}
       propertyPath: horizontalSpeed
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7984611952203078836, guid: 03164d7c2682f6d4cb587b7b710167c9,
         type: 3}
@@ -1344,6 +1344,16 @@ PrefabInstance:
       propertyPath: anim
       value: 
       objectReference: {fileID: 1972120774}
+    - target: {fileID: 7984611952203078836, guid: 03164d7c2682f6d4cb587b7b710167c9,
+        type: 3}
+      propertyPath: speed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7984611952203078836, guid: 03164d7c2682f6d4cb587b7b710167c9,
+        type: 3}
+      propertyPath: jumpHeight
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 7984611952203078839, guid: 03164d7c2682f6d4cb587b7b710167c9,
         type: 3}
       propertyPath: m_Name
