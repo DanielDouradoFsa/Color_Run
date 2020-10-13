@@ -65,7 +65,9 @@ public class SpawnMap : MonoBehaviour
         }
         if(color == 2){
             gc.vermelho();
-            InvokeRepeating("temporizador",0,1f);
+            for(timeCount = 3; timeCount<0; timeCount--){
+                temporizador();
+            }
         }
     }
 
