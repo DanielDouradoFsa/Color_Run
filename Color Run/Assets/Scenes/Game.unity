@@ -1254,7 +1254,7 @@ PrefabInstance:
         type: 3}
       propertyPath: timeText
       value: 
-      objectReference: {fileID: 448372399}
+      objectReference: {fileID: 0}
     - target: {fileID: 4107846855276944638, guid: 32576af971e84044ab584b5d85a82972,
         type: 3}
       propertyPath: m_Name
