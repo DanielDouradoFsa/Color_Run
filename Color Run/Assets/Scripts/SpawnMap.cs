@@ -32,7 +32,10 @@ public class SpawnMap : MonoBehaviour
         }
 
         currentPoint = currentPlatform[platformIndex].GetComponent<Platform>().point;
-        InvokeRepeating("sortColor",2,10);
+        if(!pc.isDead){
+            InvokeRepeating("SortColor",2,10);
+            InvokeRepeating("Temporizador",0,1);
+        }
     }
 
     void Update()
@@ -54,30 +57,21 @@ public class SpawnMap : MonoBehaviour
         offset += 86;
     }
 
-    public void sortColor(){
+    public void SortColor(){
         color = Random.Range(0,3);
         isSorted = true;
         if(color == 0){
             gc.amarelo();
-            if(timeCount > 0 && !pc.isDead){
-                InvokeRepeating("temporizador",0,1f);
-            }
         }
         if(color == 1){
             gc.azul();
-            if(timeCount > 0 && !pc.isDead){
-                InvokeRepeating("temporizador",0,1f);
-            }
         }
         if(color == 2){
             gc.vermelho();
-            if(timeCount > 0 && !pc.isDead){
-                InvokeRepeating("temporizador",0,1f);
-            }
         }
     }
 
-    void temporizador(){
+    void Temporizador(){
         if(isSorted){
             timeText.gameObject.SetActive(true);
             timeText.text = timeCount.ToString() + "s";
@@ -88,6 +82,5 @@ public class SpawnMap : MonoBehaviour
             timeText.gameObject.SetActive(false);
             isSorted = false;
         }
-        Debug.Log(timeCount);
     }
 }

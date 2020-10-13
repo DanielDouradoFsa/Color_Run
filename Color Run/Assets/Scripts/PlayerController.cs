@@ -40,24 +40,20 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetKey(KeyCode.RightArrow) && !isMovingR && transform.position.x <= 4f){
             isMovingR = true;
-            StartCoroutine(RightMove());//move para a direita
-            // if(Input.GetKeyDown(KeyCode.LeftArrow)){
-            //     StopCoroutine(RightMove());
-            // }
-             
+            StartCoroutine(RightMove());//move para a direita 
         }
         if(Input.GetKey(KeyCode.LeftArrow) && !isMovingL && transform.position.x >= -4f){
             isMovingL = true;
             StartCoroutine(LeftMove());//move para a esquerda
-            // if(Input.GetKeyDown(KeyCode.RightArrow)){
-            //     StopCoroutine(LeftMove());
-            // } 
         } 
         if(!controller.isGrounded){
             jumpVelocity -= gravity; //faz ele cair
         }
+
         speed += speed*(Time.deltaTime/50); //incrementa velocidade com o tempo
+        
         direction.y= jumpVelocity; //pular
+       
         controller.Move(direction*Time.deltaTime); //mover
         if(transform.position.y < -2){
             anim.SetTrigger("die");
@@ -66,11 +62,9 @@ public class PlayerController : MonoBehaviour
             horizontalSpeed = 0;
             isDead = true;
             Invoke("GameOver",1f);
-           
         }
     }
 
-    //método que é executado várias vezes
     IEnumerator LeftMove(){
         for(float i = 0; i<1; i += 0.1f){
             controller.Move(Vector3.left * Time.deltaTime * horizontalSpeed);
