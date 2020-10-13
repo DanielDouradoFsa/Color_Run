@@ -26,13 +26,13 @@ public class SpawnMap : MonoBehaviour
         }
 
         currentPoint = currentPlatform[platformIndex].GetComponent<Platform>().point;
-        InvokeRepeating("sortColor",3,100);
+        InvokeRepeating("sortColor",3,10);
     }
 
     void Update()
     { 
         float distance = player.position.z - 86*(count);
-        Invoke("sortColor",3f);
+        // Invoke("sortColor",3f);
         if(distance >= 0){
             Recycle(currentPlatform[platformIndex].gameObject);
             platformIndex ++;
@@ -42,6 +42,7 @@ public class SpawnMap : MonoBehaviour
             }
             currentPoint = currentPlatform[platformIndex].GetComponent<Platform>().point; 
         }
+        // Invoke("sortColor",3f);
     }
 
     public void Recycle(GameObject platform){
