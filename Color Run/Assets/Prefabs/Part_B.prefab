@@ -1329,6 +1329,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7654524444148388259}
     m_Modifications:
+    - target: {fileID: 10909551330351539, guid: 8ccac715e3499fd46a9eec4c615f5c70,
+        type: 3}
+      propertyPath: m_TagString
+      value: Azul
+      objectReference: {fileID: 0}
+    - target: {fileID: 10909551330351539, guid: 8ccac715e3499fd46a9eec4c615f5c70,
+        type: 3}
+      propertyPath: m_Name
+      value: FloorAzul
+      objectReference: {fileID: 0}
     - target: {fileID: 2922722139328772825, guid: 8ccac715e3499fd46a9eec4c615f5c70,
         type: 3}
       propertyPath: m_Name
@@ -1339,6 +1349,26 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bfcac868a05924a42927539f2ff861c1, type: 2}
+    - target: {fileID: 4745625572412128220, guid: 8ccac715e3499fd46a9eec4c615f5c70,
+        type: 3}
+      propertyPath: m_TagString
+      value: Vermelho
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745625572412128220, guid: 8ccac715e3499fd46a9eec4c615f5c70,
+        type: 3}
+      propertyPath: m_Name
+      value: FloorVermelho
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076598598757919278, guid: 8ccac715e3499fd46a9eec4c615f5c70,
+        type: 3}
+      propertyPath: m_TagString
+      value: Amarelo
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076598598757919278, guid: 8ccac715e3499fd46a9eec4c615f5c70,
+        type: 3}
+      propertyPath: m_Name
+      value: FloorAmarelo
+      objectReference: {fileID: 0}
     - target: {fileID: 5087369192958916775, guid: 8ccac715e3499fd46a9eec4c615f5c70,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

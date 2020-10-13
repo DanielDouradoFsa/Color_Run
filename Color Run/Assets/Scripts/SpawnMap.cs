@@ -13,11 +13,15 @@ public class SpawnMap : MonoBehaviour
     public int platformIndex =0;
     private int count = 1;
     private GameController gc;
-    private int color = 1;
+    public Text timeText;
+    public int timeCount =3;
+    public int color;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         gc = FindObjectOfType<GameController>();
+        timeText = GetComponent<UnityEngine.UI.Text>();
 
         for(int i=0; i<platforms.Count; i++){
             Transform p = Instantiate(platforms[i], new Vector3(0,0,86*i), transform.rotation).transform; //spawna os 3 primeiros
@@ -26,7 +30,7 @@ public class SpawnMap : MonoBehaviour
         }
 
         currentPoint = currentPlatform[platformIndex].GetComponent<Platform>().point;
-        InvokeRepeating("sortColor",3,10);
+        InvokeRepeating("sortColor",4,10);
     }
 
     void Update()
@@ -51,21 +55,27 @@ public class SpawnMap : MonoBehaviour
     }
 
     public void sortColor(){
-        if(color == 1){
-            Debug.Log("Amarelo");
+        color = Random.Range(0,2);
+        if(color == 0){
             gc.amarelo();
-
+            InvokeRepeating("temporizador", 0,1f);
+        }
+        if(color == 1){
+            gc.azul();
+            InvokeRepeating("temporizador", 0,1f);
         }
         if(color == 2){
-            Debug.Log("Azul");
-            gc.azul();
-        }
-        if(color == 3){
-            Debug.Log("Vermelho");
             gc.vermelho();
+            InvokeRepeating("temporizador", 0,1f);
         }
-        color++;
-        if(color >= 4)
-            color = 0;
+    }
+
+    void temporizador(){
+        timeText.gameObject.SetActive(true);
+        timeText.text = timeCount.ToString() + "s";
+        timeCount --;
+        if(timeCount < 0){
+            timeCount = 3;
+        }
     }
 }

@@ -49,6 +49,15 @@ public class PlayerController : MonoBehaviour
         direction.y= jumpVelocity; //pular
         controller.Move(direction*Time.deltaTime); //mover
         OnCollision();
+        if(transform.position.y < -2){
+            anim.SetTrigger("die");
+            speed = 0;
+            jumpHeight = 0;
+            horizontalSpeed = 0;
+            isDead = true;
+            Invoke("GameOver",1f);
+           
+        }
     }
 
     //método que é executado várias vezes
