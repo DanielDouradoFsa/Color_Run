@@ -9,6 +9,7 @@ public class SpawnMap : MonoBehaviour
     public List<Transform> currentPlatform = new List<Transform>();
     public int offset;
     public Transform player;
+    private PlayerController pc;
     private Transform currentPoint;
     public int platformIndex =0;
     private int count = 1;
@@ -22,6 +23,7 @@ public class SpawnMap : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         gc = FindObjectOfType<GameController>();
+        pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
         for(int i=0; i<platforms.Count; i++){
             Transform p = Instantiate(platforms[i], new Vector3(0,0,86*i), transform.rotation).transform; //spawna os 3 primeiros
@@ -57,15 +59,21 @@ public class SpawnMap : MonoBehaviour
         isSorted = true;
         if(color == 0){
             gc.amarelo();
-            InvokeRepeating("temporizador",0,1f);
+            if(timeCount > 0 && !pc.isDead){
+                InvokeRepeating("temporizador",0,1f);
+            }
         }
         if(color == 1){
             gc.azul();
-            InvokeRepeating("temporizador",0,1f);
+            if(timeCount > 0 && !pc.isDead){
+                InvokeRepeating("temporizador",0,1f);
+            }
         }
         if(color == 2){
             gc.vermelho();
-            InvokeRepeating("temporizador",0,1f);
+            if(timeCount > 0 && !pc.isDead){
+                InvokeRepeating("temporizador",0,1f);
+            }
         }
     }
 
