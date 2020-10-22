@@ -18,15 +18,12 @@ public class SpawnMap : MonoBehaviour
     public int timeCount =3;
     public int color;
     private bool isSorted;
-    public GameObject obstaculo;
-
+    
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         gc = FindObjectOfType<GameController>();
         pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        // obstaculo = GameObject.FindGameObjectWithTag("Obstaculo");
-        // obstaculo = GetComponent<GameObject>();
 
         for(int i=0; i<platforms.Count; i++){
             Transform p = Instantiate(platforms[i], new Vector3(0,0,86*i), transform.rotation).transform; //spawna os 3 primeiros
@@ -43,7 +40,6 @@ public class SpawnMap : MonoBehaviour
 
     void Update()
     { 
-        obstaculo = GameObject.FindGameObjectWithTag("Obstaculo");
         float distance = player.position.z - 86*(count);
         if(distance >= 0){
             Recycle(currentPlatform[platformIndex].gameObject);
@@ -66,15 +62,15 @@ public class SpawnMap : MonoBehaviour
         isSorted = true;
         if(color == 0){
             gc.amarelo();
-            BuildObstaculo();
+            // BuildObstaculo();
         }
         if(color == 1){
             gc.azul();
-            BuildObstaculo();
+            // BuildObstaculo();
         }
         if(color == 2){
             gc.vermelho();
-            BuildObstaculo();
+            // BuildObstaculo();
         }
         // BuildObstaculo();
     }
@@ -90,14 +86,5 @@ public class SpawnMap : MonoBehaviour
             timeText.gameObject.SetActive(false);
             isSorted = false;
         }
-    }
-
-    void BuildObstaculo(){
-        Vector3 teste = new Vector3(pc.transform.position.x,1f, (offset-pc.transform.position.z)/2);
-        Vector3 teste2 = new Vector3(pc.transform.position.x+2,1f, (offset-pc.transform.position.z)/2);
-        Vector3 teste3 = new Vector3(pc.transform.position.x-2,1f, (offset-pc.transform.position.z)/2);
-        Instantiate(obstaculo, teste, pc.transform.rotation);
-        Instantiate(obstaculo, teste2, pc.transform.rotation);
-        Instantiate(obstaculo, teste3, pc.transform.rotation);
     }
 }

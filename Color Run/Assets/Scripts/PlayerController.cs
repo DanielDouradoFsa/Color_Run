@@ -9,10 +9,10 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight;
     public float gravity;
     public float horizontalSpeed;
-    private float jumpVelocity;
-    private bool isMovingR = false;
-    private bool isMovingL = false;
-    private bool isJumping;
+    public float jumpVelocity;
+    public bool isMovingR = false;
+    public bool isMovingL = false;
+    public bool isJumping;
     public float rayRadius;
     public LayerMask layer;
     public Animator anim;
