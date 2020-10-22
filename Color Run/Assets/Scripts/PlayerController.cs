@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
 
     void OnCollision(){
         RaycastHit hit;
-        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, rayRadius, layer) && !isDead){
+        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward + new Vector3(0, 1f, 0)), out hit, rayRadius, layer) && !isDead){
             //Chama Game Over
             anim.SetTrigger("die");
             speed=0;
@@ -75,12 +75,8 @@ public class PlayerController : MonoBehaviour
             horizontalSpeed=0;
             isDead=true;
             Invoke("GameOver",1f);
+            Destroy(hit.transform.gameObject);
         }
-        /*RaycastHit coinHit;
-        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward + new Vector3(0,1f,0)), out coinHit, rayRadius, coinLayer)){
-            //Ao bater na moeda
-            Destroy(coinHit.transform.gameObject);
-        }*/
     }
     //método que é executado várias vezes
     IEnumerator LeftMove(){

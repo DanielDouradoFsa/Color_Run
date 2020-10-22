@@ -9,6 +9,7 @@ TagManager:
   - Azul
   - Vermelho
   - Tempo
+  - Obstaculo
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - UI
   - 
   - 
-  - obstaculo
-  - teste
+  - Obstaculo
+  - 
   - 
   - 
   - 
