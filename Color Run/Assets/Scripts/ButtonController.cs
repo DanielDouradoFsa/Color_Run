@@ -5,11 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class ButtonController : MonoBehaviour
 {
-    public void goToGame(){
+    public void GoToGame(){
        SceneManager.LoadScene("Game");
     }
 
-    public void sair(){
+    public void Sair(){
         Application.Quit();
+    }
+
+    public void GoToMenu(){
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void HowToPlay(){
+        SceneManager.LoadScene("HowToPlay");
     }
 }
