@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(LeftMove());//move para a esquerda
         } 
         if(!controller.isGrounded){
-            jumpVelocity -= gravity;
+            jumpVelocity -= gravity * Time.deltaTime;
         }
         OnCollision();
         speed += speed*(Time.deltaTime/50); //incrementa velocidade com o tempo
