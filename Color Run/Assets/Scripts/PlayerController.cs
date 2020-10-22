@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
         if(!controller.isGrounded){
             jumpVelocity -= gravity; //faz ele cair
         }
+        OnCollision();
         speed += speed*(Time.deltaTime/50); //incrementa velocidade com o tempo
         direction.y= jumpVelocity; //pular
         controller.Move(direction*Time.deltaTime); //mover
@@ -70,6 +71,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void OnCollision(){
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, rayRadius, layer) && !isDead){
+            //Chama Game Over
+            anim.SetTrigger("die");
+            speed=0;
+            jumpHeight=0;
+            horizontalSpeed=0;
+            isDead=true;
+            Invoke("GameOver",1f);
+        }
+        /*RaycastHit coinHit;
+        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward + new Vector3(0,1f,0)), out coinHit, rayRadius, coinLayer)){
+            //Ao bater na moeda
+            Destroy(coinHit.transform.gameObject);
+        }*/
+    }
     //método que é executado várias vezes
     IEnumerator LeftMove(){
         for(float i = 0; i<1; i += 0.1f){
