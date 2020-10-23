@@ -17,7 +17,7 @@ public class SpawnMap : MonoBehaviour
     public Text timeText;
     public int timeCount =3;
     public int color;
-    private bool isSorted;
+    public bool isSorted;
     
     void Start()
     {

@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
 
     void OnCollision(){
         RaycastHit hit;
-        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward + new Vector3(0, 1f, 0)), out hit, rayRadius, layer) && !isDead){
+        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward + new Vector3(1,1,0)), out hit, rayRadius, layer) && !isDead){
             //Chama Game Over
             anim.SetTrigger("die");
             speed=0;

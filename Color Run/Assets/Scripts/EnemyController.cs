@@ -9,13 +9,16 @@ public class EnemyController : MonoBehaviour
     public float speed;
     public float horizontalSpeed;
     public Animator anim;
-
+    public GameObject bucket;
     public Transform playerPosition;
-
+    // public SpawnMap spawn;
 
     void Start()
     {
+        // spawn = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnMap>();
+        // bucket = GameObject.FindGameObjectWithTag("Obstaculo");
         controller = GetComponent<CharacterController> ();
+        InvokeRepeating("SpawnBucket",0,2);
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController> ();
     }
 
@@ -32,7 +35,6 @@ public class EnemyController : MonoBehaviour
         else if(controller.transform.position.x > playerPosition.position.x && (controller.transform.position.x - playerPosition.position.x >= 0.5) && playerPosition.position.x < 4.92){
             controller.Move(Vector3.left * Time.deltaTime * horizontalSpeed);
         }
-
 
         speed += speed*(Time.deltaTime/50); //incrementa velocidade com o tempo
        
@@ -55,5 +57,10 @@ public class EnemyController : MonoBehaviour
     //         controller.Move(Vector3.right * Time.deltaTime * horizontalSpeed);
     //         yield return null;
     //     }
+    // }
+
+    // void SpawnBucket(){
+    //     if(spawn.isSorted)
+    //     Instantiate(bucket,controller.transform.position,controller.transform.rotation);
     // }
 }
