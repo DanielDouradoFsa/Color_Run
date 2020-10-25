@@ -98,6 +98,16 @@ public class PlayerController : MonoBehaviour
             Invoke("GameOver",1f);
             Destroy(hit.transform.gameObject);
         }
+        else if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up), out hit, 1f, layer)){
+            // Debug.Log("bateu e");
+            anim.SetTrigger("die");
+            speed=0;
+            jumpHeight=0;
+            horizontalSpeed=0;
+            isDead=true;
+            Invoke("GameOver",1f);
+            Destroy(hit.transform.gameObject);
+        }
     }
     //método que é executado várias vezes
     IEnumerator LeftMove(){

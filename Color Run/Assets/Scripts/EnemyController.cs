@@ -73,11 +73,11 @@ public class EnemyController : MonoBehaviour
             }
             if(controller.transform.position.x < -2){
                 Instantiate(obs,spot.position + new Vector3(3.5f,0,0),spot.rotation);
-                Instantiate(obs,spot.position + new Vector3(0,2.75f,0),spot.rotation); 
+                Instantiate(obs,spot.position + new Vector3(3.5f,2.75f,0),spot.rotation); 
             }
             else if(controller.transform.position.x > 2){
                 Instantiate(obs,spot.position + new Vector3(-3.5f,0,0),spot.rotation);
-                Instantiate(obs,spot.position + new Vector3(0,2.75f,0),spot.rotation);
+                Instantiate(obs,spot.position + new Vector3(-3.5f,2.75f,0),spot.rotation);
             }
             else{
                 Instantiate(obs,spot.position + new Vector3(-3.5f,0,0),spot.rotation);
