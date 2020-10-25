@@ -10,20 +10,23 @@ public class EnemyController : MonoBehaviour
     public float horizontalSpeed;
     public Animator anim;
     public GameObject bucket;
+    private GameObject obs;
     public Transform playerPosition;
-    // public SpawnMap spawn;
+    public SpawnMap spawn;
+    public Transform spot;
 
     void Start()
     {
-        // spawn = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnMap>();
-        // bucket = GameObject.FindGameObjectWithTag("Obstaculo");
+        spawn = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnMap>();
+        bucket = Resources.Load("bucket") as GameObject;
         controller = GetComponent<CharacterController> ();
-        InvokeRepeating("SpawnBucket",0,2);
+        InvokeRepeating("SpawnBucket",2,1.5f);
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController> ();
     }
 
     void Update()
     {
+        
         playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
         speed = -playerController.speed;
         horizontalSpeed = playerController.horizontalSpeed/1.5f;
@@ -59,8 +62,27 @@ public class EnemyController : MonoBehaviour
     //     }
     // }
 
-    // void SpawnBucket(){
-    //     if(spawn.isSorted)
-    //     Instantiate(bucket,controller.transform.position,controller.transform.rotation);
-    // }
+    void SpawnBucket(){
+        obs = bucket;
+        if(!playerController.isDead){
+            if(playerController.isJumping){
+                Instantiate(obs,spot.position + new Vector3(0,2.75f,0),spot.rotation);
+            }       
+            else{
+                Instantiate(obs,spot.position,spot.rotation);
+            }
+            if(controller.transform.position.x < -2){
+                Instantiate(obs,spot.position + new Vector3(3.5f,0,0),spot.rotation);
+                Instantiate(obs,spot.position + new Vector3(0,2.75f,0),spot.rotation); 
+            }
+            else if(controller.transform.position.x > 2){
+                Instantiate(obs,spot.position + new Vector3(-3.5f,0,0),spot.rotation);
+                Instantiate(obs,spot.position + new Vector3(0,2.75f,0),spot.rotation);
+            }
+            else{
+                Instantiate(obs,spot.position + new Vector3(-3.5f,0,0),spot.rotation);
+                Instantiate(obs,spot.position + new Vector3(3.5f,0,0),spot.rotation);
+            }
+        }
+    }
 }

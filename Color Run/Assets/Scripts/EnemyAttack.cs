@@ -22,8 +22,8 @@ public class EnemyAttack : MonoBehaviour
     }
 
     void WithoutCollision(){
-        // if(pc.transform.position.z - this.transform.position.z > 5){
-        //     Destroy(this.gameObject);
-        // }
+        if(pc.transform.position.z - this.transform.position.z > 5){
+            Destroy(this.gameObject);
+        }
     }   
 }

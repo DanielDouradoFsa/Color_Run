@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2050154580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2050154581}
+  m_Layer: 0
+  m_Name: Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2050154581
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050154580}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.58, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7762202211397120049}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7762202211397120051
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,7 +44,7 @@ GameObject:
   - component: {fileID: 7762202211397120052}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +60,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3369348962788199291}
+  - {fileID: 5403127911986054131}
+  - {fileID: 2050154581}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -45,13 +76,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2
+  m_Height: 0.89
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.52, z: 0}
 --- !u!136 &7762202211397120054
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -61,7 +92,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 7762202211397120051}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 1
   m_Direction: 1
@@ -82,8 +113,11 @@ MonoBehaviour:
   speed: 0
   horizontalSpeed: 0
   anim: {fileID: 0}
+  bucket: {fileID: 4430345130055279174, guid: fd70bfc0afde74d428df77c7c0a56c82, type: 3}
   playerPosition: {fileID: 0}
---- !u!1001 &7762202212029948001
+  spawn: {fileID: 0}
+  spot: {fileID: 2050154581}
+--- !u!1001 &1117298410139216105
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -152,9 +186,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad4248b28904edc4a91e32a51434f931, type: 3}
---- !u!4 &3369348962788199291 stripped
+--- !u!4 &5403127911986054131 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: ad4248b28904edc4a91e32a51434f931,
     type: 3}
-  m_PrefabInstance: {fileID: 7762202212029948001}
+  m_PrefabInstance: {fileID: 1117298410139216105}
   m_PrefabAsset: {fileID: 0}

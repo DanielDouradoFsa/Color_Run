@@ -67,8 +67,29 @@ public class PlayerController : MonoBehaviour
 
     void OnCollision(){
         RaycastHit hit;
-        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward + new Vector3(1,1,0)), out hit, rayRadius, layer) && !isDead){
-            //Chama Game Over
+        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, rayRadius, layer)){
+            // Debug.Log("bateu");
+            anim.SetTrigger("die");
+            speed=0;
+            jumpHeight=0;
+            horizontalSpeed=0;
+            isDead=true;
+            Invoke("GameOver",1f);
+            Destroy(hit.transform.gameObject);
+        }
+        else if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out hit, 1f, layer)){
+            // Debug.Log("bateu d");
+            anim.SetTrigger("die");
+            speed=0;
+            jumpHeight=0;
+            horizontalSpeed=0;
+            isDead=true;
+            Invoke("GameOver",1f);
+            Destroy(hit.transform.gameObject);
+        }
+
+        else if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out hit, 1f, layer)){
+            // Debug.Log("bateu e");
             anim.SetTrigger("die");
             speed=0;
             jumpHeight=0;
